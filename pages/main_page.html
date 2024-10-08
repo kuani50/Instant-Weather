@@ -12,6 +12,11 @@
 </head>
 
 <body class="h-screen w-screen">
+
+    <div class="absolute w-screen h-screen z-10 bg-[#50505060]">
+        <object data="settings.html" type="text/html" class="h-full w-full"></object>
+    </div>
+
     <div class="w-[100vw] h-[100%] grid grid-rows-8 place-items-center items-center">
         <h1 class="font-inter font-bold text-[#F3EDF7] text-[4vw] tracking-[-0.02vw] row-start-3 drop-shadow-lg drop-shadow-black">Instant Weather</h1>
 
@@ -29,7 +34,7 @@
             </div>
         </form>
 
-        <div class="w-full row-start-8 flex justify-end pr-[1vw] pt-[4vh]">
+        <div class="w-full row-start-8 flex justify-end pr-[1vw] pt-[4vh] z-20">
             <button>
                 <img src="../assets/Settings.svg" alt="Paramètres" class="h-[5vh] w-[5vh]">
             </button>
