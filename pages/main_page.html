@@ -7,28 +7,33 @@
     <title>Instant Weather</title>
     <link rel="stylesheet" href="./style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/tailwind.config.js"></script>
     <script defer src="./js/app.js"></script>
 </head>
 
-<body>
-    <div class="w-full h-full flex items-center content-evenly flex-col">
-        <h1 class="font-inter text-[#F3EDF7] text-7xl">Instant Weather</h1>
+<body class="h-screen w-screen">
+    <div class="w-[100vw] h-[100%] grid grid-rows-8 place-items-center items-center">
+        <h1 class="font-inter font-bold text-[#F3EDF7] text-[4vw] tracking-[-0.02vw] row-start-3 drop-shadow-lg drop-shadow-black">Instant Weather</h1>
 
-        
-            <form method="GET">
-              <div class="flex justify-between bg-[#ECE6F0] rounded-full pl-[2.5vw] pr-[3vw]">
-                <input type="search" name="q" class="w-[25vw] bg-inherit rounded-full py-[0.5vw] text-sm text-black   focus:outline-none focus:text-gray-900" placeholder="14000" autocomplete="off">
-                
-                <span class="inset-y-0 right-0 flex items-center pl-[0.5vw]">
-                    <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                        <img src="../assets/state-layer.svg" alt="">
-                    </button>
-                </span>
+        <form method="GET" class="row-start-5">
+            <div class="flex justify-between bg-[#ECE6F0] rounded-full pl-[2.5vw] pr-[1.5vw] shadow-xl shadow-gray-700" >
+            <input type="search" name="q" class="w-[25vw] bg-inherit rounded-full py-[0.5vw] text-[0.8vw] text-black   focus:outline-none focus:text-gray-900" placeholder="14000" autocomplete="off">
+            
+            <span class="inset-y-0 right-0 flex items-center pl-[0.5vw]">
+                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                    <img src="../assets/state-layer.svg" class="h-[4vh] w-[4vh]" alt="">
+                </button>
+            </span>
 
-                
+            
             </div>
-            </form>
+        </form>
 
+        <div class="w-full row-start-8 flex justify-end pr-[0.5vw] pt-[5vh]">
+            <button>
+                <img src="../assets/Settings.svg" alt="Paramètres" class="h-[5vh] w-[5vh]">
+            </button>
+        </div>
     </div>
 </body>
 
