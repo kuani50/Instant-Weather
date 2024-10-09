@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instant Weather</title>
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./js/tailwind.config.js"></script>
-    <script defer src="./js/app.js"></script>
+    <script src="../js/tailwind.config.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/main_page.js"></script>
 </head>
 
 <body class="h-screen w-screen">
 
-    <div class="absolute w-screen h-screen z-10 bg-[#50505060]">
-        <object data="settings.html" type="text/html" class="h-full w-full"></object>
+    <div class="absolute w-screen h-screen z-10 bg-[#50505060] hidden" id="settings_page">
+        <object data="settings.html" type="text/html" class="h-full w-full" id="settings_object"></object>
     </div>
 
     <div class="w-[100vw] h-[100%] grid grid-rows-8 place-items-center items-center">
@@ -34,7 +35,7 @@
             </div>
         </form>
 
-        <div class="w-full row-start-8 flex justify-end pr-[1vw] pt-[4vh] z-20">
+        <div class="w-full row-start-8 flex justify-end pr-[1vw] pt-[4vh] z-20" id="settings_button">
             <button>
                 <img src="../assets/Settings.svg" alt="Paramètres" class="h-[5vh] w-[5vh]">
             </button>
