@@ -4,9 +4,9 @@ let settings_page = document.getElementById('settings_page');
 let settings_object = document.getElementById('settings_object');
 
 settings_object.addEventListener('load', () => {
-    let croix = settings_object.contentDocument.getElementById('croix');
+    let close = settings_object.contentDocument.getElementById('close');
     
-    croix.addEventListener('click', () => {
+    close.addEventListener('click', () => {
         settings_page.classList.toggle('hidden');
     });
 });
