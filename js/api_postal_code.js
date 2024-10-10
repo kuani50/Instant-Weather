@@ -1,5 +1,5 @@
 //function that allows to find the city code and the name of the city with the postal code 
-async function search(postalCode){
+async function searchWCode(postalCode){
     //the characters that are allowed
     const regex = new RegExp(/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/);
 
@@ -44,4 +44,18 @@ async function searchWName(cityName){
     return result;
 }
 
+async function search(input){
 
+    //the characters to see if it corresponds to a postal code
+    const regex = new RegExp(/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/);
+
+    let tab = [];
+
+    if(regex.test(input) == true){
+        tab = await searchWCode(input);
+    }else{
+        tab = await searchWName(input);
+    }
+
+    return tab;
+}
