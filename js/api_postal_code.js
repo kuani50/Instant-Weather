@@ -1,3 +1,5 @@
+export { search };
+
 //function that allows to find the city code and the name of the city with the postal code 
 async function search(postalCode){
     //the characters that are allowed
@@ -19,8 +21,7 @@ async function search(postalCode){
         result.push({"code":element.code, "nom":element.nom});
     });
 
-    console.table(result);
-
     //returns an array with the city code and the name of the city
     return result;
 }
+
