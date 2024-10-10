@@ -19,8 +19,29 @@ async function search(postalCode){
         result.push({"code":element.code, "nom":element.nom});
     });
 
-    console.table(result);
+    //returns an array with the city code and the name of the city
+    return result;
+}
+
+
+
+
+//function that allows to find the city code and the code of the city with the name of the city 
+async function searchWName(cityName){
+
+    //asks the API about the informations it has about the name enter in parameter
+    let reponse = await fetch("https://geo.api.gouv.fr/communes?nom=" + cityName +"&fields=departement&boost=population&limit=5");
+    let tab = await reponse.json();
+
+    let result = [];
+
+    
+    tab.forEach(element => {
+        result.push({"code":element.code, "nom":element.nom});
+    });
 
     //returns an array with the city code and the name of the city
     return result;
 }
+
+
