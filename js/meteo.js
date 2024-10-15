@@ -35,6 +35,13 @@ async function displayMeteo(){
     result.forEach(element => {
         const oneCard = card.content.cloneNode(true);
         oneCard.querySelectorAll('h1')[0].innerText=getFrenchDate(date);
+        oneCard.querySelectorAll('.meteo_max_temp')[0].innerText=`${element.tMax}°C`;
+        oneCard.querySelectorAll('.meteo_min_temp')[0].innerText=`${element.tMin}°C`;
+        oneCard.querySelectorAll('.meteo_rain_proba')[0].innerText=`${element.probaRain}%`;
+        oneCard.querySelectorAll('.meteo_sun_hours')[0].innerText=`${element.sunHours}h`;
+        oneCard.querySelectorAll('.meteo_cumul_rain')[0].innerText=`${element.cumulRain} mm`;
+        oneCard.querySelectorAll('.meteo_wind')[0].innerText=`${element.avgWind} km/h`;
+        oneCard.querySelectorAll('.meteo_wind_dir')[0].innerText=`${element.avgWind}°`;
         card.parentNode.appendChild(oneCard);
         date.setDate(date.getDate()+1);
     });
