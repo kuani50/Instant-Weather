@@ -5,15 +5,15 @@ export async function weather(cityCode){
     
     let weatherTab = []; 
 
-    tab.forecast.forEach(async element =>{
+    for(const element of tab.forecast){
         weatherTab.push({
             "latitude" : element["latitude"], "longitude" : element["longitude"],
             "tMax" : element["tmax"], "tMin" : element["tmin"], "probaRain" : element["probarain"],
             "sunHours" : element["sun_hours"], "cumulRain" : element["rr10"], "avgWind" : element["wind10m"],
             "windDir" : element["dirwind10m"], "weather" : (await getCodeWeather(element["weather"])),
             "weatherCode" : element["weather"]
-        });
-    });
+        })
+    }
     
     return weatherTab;
 }
