@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/tailwind.config.js"></script>
     <script defer src="../js/app.js"></script>
+    <script defer type="module" src="../js/meteo.js"></script>
 </head>
 <body class="w-screen h-screen grid grid-rows-3 bg-slate-600">
     <div class="justify-center items-center flex flex-col">
@@ -19,7 +20,7 @@
             <h1 class="items-center text-7xl mr-7 font-bold text-white">Caen</h1>
             <img src="../assets/meteo/meteo_emoji/sun.png" alt="" class="w-[5rem]">
         </div>
-        <h2 class="text-[#ffffffb2] text-2xl font-bold mt-6 disabled:hidden">longitude: 49.1783300144186,   latitude: -0.36078501986557154 </h2>
+        <h2 id="coord" class="text-[#ffffffb2] text-2xl font-bold mt-6 disabled:hidden">longitude: 49.1783300144186,   latitude: -0.36078501986557154 </h2>
     </div>
     <div class="row-span-2 mx-[9vw] px-[1vw] flex flex-col gap-8 overflow-y-scroll">
         <template id="card">
@@ -37,7 +38,7 @@
                     </div>
                     <div>
                         <img class="inline" src="../assets/meteo/droplet.svg" alt="">
-                        <span>100%</span>
+                        <span id>100%</span>
                     </div>
                     <div>
                         <img class="inline" src="../assets/meteo/sun.svg" alt="">
@@ -64,18 +65,5 @@
             </div>
         </template>
     </div>
-    <script>
-        //Script tempo pour essayer
-
-        const card = document.getElementById("card");
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-    </script>
 </body>
 </html>
