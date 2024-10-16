@@ -17,3 +17,8 @@
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.171);
 	background-color: #1d1919af;
 }
+body {
+    background-image: url("../assets/main_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
