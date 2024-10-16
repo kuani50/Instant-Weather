@@ -3,8 +3,13 @@ import {weather2} from './api_weather.js';
 const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ]
 
 const coord = document.getElementById("coord");
-
+const emoji = document.getElementById("emoji");
 const card = document.getElementById("card");
+
+async function getMeteoEmoji(code){
+    let result = await (await fetch('/assets/code_emoji.json')).json();
+    return `/assets/meteo/meteo_emoji/${result[code]}`;
+}
 
 
 function getFrenchDate(date){
@@ -29,12 +34,14 @@ async function displayMeteo(){
     console.log(result);
 
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
+    emoji.src=await getMeteoEmoji(result[0].weatherCode);
 
     const date = new Date();
 
-    result.forEach(element => {
+    result.forEach(async (element) => {
         const oneCard = card.content.cloneNode(true);
         oneCard.querySelectorAll('h1')[0].innerText=getFrenchDate(date);
+        date.setDate(date.getDate()+1);
         oneCard.querySelectorAll('.meteo_max_temp')[0].innerText=`${element.tMax}°C`;
         oneCard.querySelectorAll('.meteo_min_temp')[0].innerText=`${element.tMin}°C`;
         oneCard.querySelectorAll('.meteo_rain_proba')[0].innerText=`${element.probaRain}%`;
@@ -42,8 +49,10 @@ async function displayMeteo(){
         oneCard.querySelectorAll('.meteo_cumul_rain')[0].innerText=`${element.cumulRain} mm`;
         oneCard.querySelectorAll('.meteo_wind')[0].innerText=`${element.avgWind} km/h`;
         oneCard.querySelectorAll('.meteo_wind_dir')[0].innerText=`${element.avgWind}°`;
+        oneCard.querySelectorAll('.meteo_label')[0].innerText=element.weather;
+        oneCard.querySelectorAll('.meteo_emoji')[0].src=await getMeteoEmoji(element.weatherCode);
         card.parentNode.appendChild(oneCard);
-        date.setDate(date.getDate()+1);
+        
     });
 
 }

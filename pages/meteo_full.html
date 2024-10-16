@@ -11,6 +11,7 @@
     <script defer src="../js/app.js"></script>
     <script defer type="module" src="../js/meteo.js"></script>
 </head>
+
 <body class="w-screen h-screen grid grid-rows-3 bg-slate-600">
     <div class="justify-center items-center flex flex-col">
         <div class="absolute top-7 left-6">
@@ -18,52 +19,62 @@
         </div>
         <div class="flex items-center justify-around">
             <h1 class="items-center text-7xl mr-7 font-bold text-white">Caen</h1>
-            <img src="../assets/meteo/meteo_emoji/sun.png" alt="" class="w-[5rem]">
+            <img id="emoji" src="../assets/meteo/meteo_emoji/Sun.png" alt="" class="w-[5rem]">
         </div>
-        <h2 id="coord" class="text-[#ffffffb2] text-2xl font-bold mt-6 disabled:hidden">longitude: 49.1783300144186,   latitude: -0.36078501986557154 </h2>
+        <h2 id="coord" class="text-[#ffffffb2] text-2xl font-bold mt-6 disabled:hidden">longitude: 49.1783300144186,
+            latitude: -0.36078501986557154 </h2>
     </div>
     <div class="row-span-2 mx-[9vw] px-[1vw] flex flex-col gap-8 overflow-y-scroll">
         <template id="card">
             <div class="bg-[#d9d9d999] w-full rounded-3xl font-bold text-white text-3xl">
                 <h1 class="text-white text-4xl ml-6 my-6">Lundi 30 septembre 2024</h1>
-                <div class="flex w-full justify-around my-8">
-                    <div class="text-[#761313]">
-                        <img class="inline" src="../assets/meteo/arrow_red_up.svg" alt="">
-                        <span class="meteo_max_temp">26°C</span>
+                <div class="grid grid-cols-4 grid-flow-col">
+                    <div class="flex flex-col justify-center items-center h-full">
+                        <img class="meteo_emoji w-[13vw] py-2" src="../assets/meteo/meteo_emoji/Sun.png" alt="">
+                        <span class="meteo_label text-center text-2xl w-[17vw]">Meteo</span>
                     </div>
+                    <div class="col-span-3">
+                        <div class="flex w-full justify-around my-8 ">
+                            <div class="text-[#761313]">
+                                <img class="inline" src="../assets/meteo/arrow_red_up.svg" alt="">
+                                <span class="meteo_max_temp">26°C</span>
+                            </div>
 
-                    <div class="text-[#0057A8]">
-                        <img class="inline" src="../assets/meteo/arrow_blue_down.svg" alt="">
-                        <span class="meteo_min_temp">-10°C</span>
-                    </div>
-                    <div>
-                        <img class="inline" src="../assets/meteo/droplet.svg" alt="">
-                        <span class="meteo_rain_proba">100%</span>
-                    </div>
-                    <div>
-                        <img class="inline" src="../assets/meteo/sun.svg" alt="">
-                        <span class="meteo_sun_hours">10h</span>
-                    </div>
-                </div>
-                <div class="flex w-full justify-around my-14 disabled:hidden">
-                    <div class="flex flex-col items-center disabled:hidden">
-                        <img class="w-[20vh]" src="/assets/meteo/pouring_liquid.png" alt="">
-                        <span class="meteo_cumul_rain">103 mm</span>
-                    </div>
-                    <div class="flex flex-col items-center disabled:hidden">
-                        <img class="w-[20vh] rounded-[46px]" src="/assets/meteo/wind_face.png" alt="">
-                        <span class="meteo_wind">100 km/h</span>
-                    </div>
-                    <div class="flex flex-col items-center disabled:hidden">
-                        <div>
-                            <img class="w-[20vh]" src="/assets/meteo/compass_bg.svg" alt="">
-                            <img class="w-[20vh] mt-[-20vh]" src="/assets/meteo/compass_fg.svg" alt="">
+                            <div class="text-[#0057A8]">
+                                <img class="inline" src="../assets/meteo/arrow_blue_down.svg" alt="">
+                                <span class="meteo_min_temp">-10°C</span>
+                            </div>
+                            <div>
+                                <img class="inline" src="../assets/meteo/droplet.svg" alt="">
+                                <span class="meteo_rain_proba">100%</span>
+                            </div>
+                            <div>
+                                <img class="inline" src="../assets/meteo/sun.svg" alt="">
+                                <span class="meteo_sun_hours">10h</span>
+                            </div>
                         </div>
-                        <span class="meteo_wind_dir">170°</span>
+                        <div class="flex w-full justify-around my-14 disabled:hidden">
+                            <div class="flex flex-col items-center disabled:hidden">
+                                <img class="w-[20vh]" src="/assets/meteo/pouring_liquid.png" alt="">
+                                <span class="meteo_cumul_rain">103 mm</span>
+                            </div>
+                            <div class="flex flex-col items-center disabled:hidden">
+                                <img class="w-[20vh] rounded-[46px]" src="/assets/meteo/wind_face.png" alt="">
+                                <span class="meteo_wind">100 km/h</span>
+                            </div>
+                            <div class="flex flex-col items-center disabled:hidden">
+                                <div>
+                                    <img class="w-[20vh]" src="/assets/meteo/compass_bg.svg" alt="">
+                                    <img class="w-[20vh] mt-[-20vh]" src="/assets/meteo/compass_fg.svg" alt="">
+                                </div>
+                                <span class="meteo_wind_dir">170°</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </template>
     </div>
 </body>
+
 </html>
