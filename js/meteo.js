@@ -5,6 +5,14 @@ const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juil
 const coord = document.getElementById("coord");
 const emoji = document.getElementById("emoji");
 const card = document.getElementById("card");
+const back = document.getElementById("back_icon");
+
+back.addEventListener("click",() => {
+    const url = new URL(window.location.href);
+    url.pathname="/pages/main_page.html";
+    document.location.href=url;
+})
+
 
 async function getMeteoEmoji(code){
     let result = await (await fetch('/assets/code_emoji.json')).json();

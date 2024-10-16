@@ -59,6 +59,14 @@ function setupLocalStorage(){
     }
 }
 
+function onSearch(val){
+    const url = new URL(window.location.href);
+    url.pathname="/pages/meteo_full.html";
+    url.searchParams.set('insee',val);
+    document.location.href=url;
+}
+
+
 // displays the available search results
 search_bar.addEventListener('input', async () => {
     let resultats = await search(search_bar.value);
@@ -67,11 +75,13 @@ search_bar.addEventListener('input', async () => {
         return;
     }
 
+
     city_choice.setAttribute("size", resultats.length);
     Array.from(resultats).forEach(element => {
         let row = row_template.content.cloneNode(true);
-        let row_content = row.querySelectorAll("*");
-        row_content[0].innerHTML = element['nom'];
+        let row_content = row.querySelectorAll("button");
+        row_content[0].innerText = element['nom'];
+        row_content[0].addEventListener("click",() => onSearch(element['code']));
         city_choice.appendChild(row);
     });
 
