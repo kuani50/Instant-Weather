@@ -59,10 +59,11 @@ function setupLocalStorage(){
     }
 }
 
-function onSearch(val){
+function onSearch(code,city){
     const url = new URL(window.location.href);
     url.pathname="/pages/meteo_full.html";
-    url.searchParams.set('insee',val);
+    url.searchParams.set('insee',code);
+    url.searchParams.set('city',city);
     document.location.href=url;
 }
 
@@ -81,7 +82,7 @@ search_bar.addEventListener('input', async () => {
         let row = row_template.content.cloneNode(true);
         let row_content = row.querySelectorAll("button");
         row_content[0].innerText = element['nom'];
-        row_content[0].addEventListener("click",() => onSearch(element['code']));
+        row_content[0].addEventListener("click",() => onSearch(element['code'],element['nom']));
         city_choice.appendChild(row);
     });
 

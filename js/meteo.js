@@ -1,4 +1,4 @@
-import {weather2} from './api_weather.js';
+import {weather} from './api_weather.js';
 
 const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ]
 
@@ -6,6 +6,7 @@ const coord = document.getElementById("coord");
 const emoji = document.getElementById("emoji");
 const card = document.getElementById("card");
 const back = document.getElementById("back_icon");
+const cityTitle = document.getElementById("city");
 
 back.addEventListener("click",() => {
     const url = new URL(window.location.href);
@@ -35,12 +36,16 @@ function getFrenchDate(date){
 }
 
 async function displayMeteo(){
-    const insee = new URLSearchParams(window.location.search).get("insee");
+    const url = new URLSearchParams(window.location.search);
+    const insee = url.get("insee");
+    const city = url.get("city");
 
-    const result = await weather2(insee);
+
+    const result = await weather(insee);
 
     console.log(result);
 
+    cityTitle.innerText=city;
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
     emoji.src=await getMeteoEmoji(result[0].weatherCode);
 
