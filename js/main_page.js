@@ -47,24 +47,26 @@ function onSearch(code,city){
 // displays the available search results
 search_bar.addEventListener('input', async () => {
     let resultats = await search(search_bar.value);
-    if(resultats == null) {
-        city_choice.innerHTML = '';
-        return;
-    }
+    city_choice.innerHTML = '';
 
-
-    city_choice.setAttribute("size", resultats.length);
+    let names = new Set();
     Array.from(resultats).forEach(element => {
-        let row = row_template.content.cloneNode(true);
-        let row_content = row.querySelectorAll("button");
-        row_content[0].innerText = element['nom'];
-        row_content[0].addEventListener("click",() => onSearch(element['code'],element['nom']));
-        city_choice.appendChild(row);
+        if(!names.has(element['nom'])){
+            names.add(element['nom']);
+            let row = row_template.content.cloneNode(true);
+            let row_content = row.querySelectorAll("button");
+            row_content[0].innerText = element['nom'];
+            row_content[0].addEventListener("click",() => onSearch(element['code'],element['nom']));
+            city_choice.appendChild(row);
+        }
     });
 
     // adds border radius to the last element of the list
     let last = Array.from(city_choice.children).pop();
-    last.classList.add("rounded-br-lg");
-    last.classList.add("rounded-bl-lg");
-    city_choice.appendChild(last);
+    if(last){
+        last.classList.add("rounded-br-lg");
+        last.classList.add("rounded-bl-lg");
+        city_choice.appendChild(last);
+    }
+    
 });
