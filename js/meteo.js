@@ -103,8 +103,9 @@ async function displayMeteo(){
         oneCard.querySelectorAll('.meteo_wind')[0].innerText=`${element.avgWind} km/h`;
         oneCard.querySelectorAll('.meteo_wind_dir')[0].innerText=`${element.avgWind}°`;
         oneCard.querySelectorAll('.meteo_label')[0].innerText=element.weather;
+        const img = oneCard.querySelectorAll('.meteo_emoji')[0];
         getMeteoEmoji(element.weatherCode).then(emoji => {
-            oneCard.querySelectorAll('.meteo_emoji')[0].src=emoji;
+            img.src=emoji;
         });
         
         card.parentNode.appendChild(oneCard);
