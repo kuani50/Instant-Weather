@@ -1,3 +1,5 @@
+export { search };
+
 //function that allows to find the city code and the name of the city with the postal code 
 async function searchWCode(postalCode){
     //the characters that are allowed
@@ -39,7 +41,6 @@ async function searchWName(cityName){
     tab.forEach(element => {
         result.push({"code":element.code, "nom":element.nom});
     });
-
     //returns an array with the city code and the name of the city
     return result;
 }
@@ -59,3 +60,4 @@ async function search(input){
 
     return tab;
 }
+
