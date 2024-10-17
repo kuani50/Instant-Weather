@@ -92,6 +92,7 @@ async function displayMeteo(){
             
             oneCard.querySelectorAll('.meteo_emoji')[0].parentNode.classList.add("flex-col");
             oneCard.querySelectorAll('.meteo_emoji')[0].style.width="13vw";
+            oneCard.querySelectorAll('.meteo-split-bar')[0].classList.remove("hidden");
 
         }
 
