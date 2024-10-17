@@ -9,56 +9,72 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/tailwind.config.js"></script>
     <script defer src="../js/app.js"></script>
+    <script defer type="module" src="../js/meteo.js"></script>
 </head>
+
 <body class="w-screen h-screen grid grid-rows-3 bg-slate-600">
-    <div class="justify-center items-center flex">
-        <div class="absolute top-7 left-6">
+    <div class="justify-center items-center flex flex-col">
+        <div id="back_icon" class="absolute top-7 left-6 cursor-pointer">
             <img src="../assets/back_arrow.svg" alt="">
         </div>
         <div class="flex items-center justify-around">
-            <h1 class="items-center text-7xl mr-7 font-bold text-white">Caen</h1>
-            <img src="../assets/meteo/meteo_emoji/sun.svg" alt="" class="w-[5rem]">
+            <h1 id="city" class="items-center text-7xl mr-7 font-bold text-white">Caen</h1>
+            <img id="emoji" src="../assets/meteo/meteo_emoji/Sun.png" alt="" class="w-[5rem]">
         </div>
-
+        <h2 id="coord" class="text-[#ffffffb2] text-2xl font-bold mt-6 hidden">longitude: 49.1783300144186,
+            latitude: -0.36078501986557154 </h2>
     </div>
     <div class="row-span-2 mx-[9vw] px-[1vw] flex flex-col gap-8 overflow-y-scroll">
         <template id="card">
-            <div class="bg-[#d9d9d999] w-full h-min rounded-3xl font-bold">
+            <div class="bg-[#d9d9d94d] w-full rounded-3xl font-bold text-white text-3xl">
                 <h1 class="text-white text-4xl ml-6 my-6">Lundi 30 septembre 2024</h1>
-                <div class="flex w-full justify-around text-white text-3xl my-8">
-                    <div class="text-[#761313]">
-                        <img class="inline" src="../assets/meteo/arrow_red_up.svg" alt="">
-                        <span>26°C</span>
+                <div class="grid grid-cols-4 grid-flow-col">
+                    <div class="flex disable:flex-col justify-center items-center h-full">
+                        <img class="meteo_emoji py-2 w-[5vw] ml-[2vw] disabled:w-[13vw]" src="../assets/meteo/meteo_emoji/Sun.png" alt="">
+                        <span class="meteo_label text-center text-2xl w-[17vw]">Meteo</span>
                     </div>
+                    <div class="col-span-3">
+                        <div class="flex w-full justify-around my-8 ">
+                            <div class="text-[#761313]">
+                                <img class="inline" src="../assets/meteo/arrow_red_up.svg" alt="">
+                                <span class="meteo_max_temp">26°C</span>
+                            </div>
 
-                    <div class="text-[#0057A8]">
-                        <img class="inline" src="../assets/meteo/arrow_blue_down.svg" alt="">
-                        <span>-10°C</span>
-                    </div>
-                    <div>
-                        <img class="inline" src="../assets/meteo/droplet.svg" alt="">
-                        <span>100%</span>
-                    </div>
-                    <div>
-                        <img class="inline" src="../assets/meteo/sun.svg" alt="">
-                        <span>10h</span>
+                            <div class="text-[#0057A8]">
+                                <img class="inline" src="../assets/meteo/arrow_blue_down.svg" alt="">
+                                <span class="meteo_min_temp">-10°C</span>
+                            </div>
+                            <div>
+                                <img class="inline" src="../assets/meteo/droplet.svg" alt="">
+                                <span class="meteo_rain_proba">100%</span>
+                            </div>
+                            <div>
+                                <img class="inline" src="../assets/meteo/sun.svg" alt="">
+                                <span class="meteo_sun_hours">10h</span>
+                            </div>
+                        </div>
+                        <div class="disabled:flex w-full justify-around my-14 hidden">
+                            <div class="disabled:flex flex-col items-center hidden">
+                                <img class="w-[20vh]" src="/assets/meteo/pouring_liquid.png" alt="">
+                                <span class="meteo_cumul_rain">103 mm</span>
+                            </div>
+                            <div class="disabled:flex flex-col items-center hidden">
+                                <img class="w-[20vh] rounded-[46px]" src="/assets/meteo/wind_face.png" alt="">
+                                <span class="meteo_wind">100 km/h</span>
+                            </div>
+                            <div class="disabled:flex flex-col items-center hidden">
+                                <div>
+                                    <img class="w-[20vh]" src="/assets/meteo/compass_bg.svg" alt="">
+                                    <img class="w-[20vh] mt-[-20vh]" src="/assets/meteo/compass_fg.svg" alt="">
+                                </div>
+                                <span class="meteo_wind_dir">170°</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </template>
     </div>
-    <script>
-        //Script tempo pour essayer
-
-        const card = document.getElementById("card");
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-        card.parentNode.appendChild(card.content.cloneNode(true));
-    </script>
 </body>
+
 </html>
