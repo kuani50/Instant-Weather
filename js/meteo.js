@@ -60,7 +60,7 @@ async function displayMeteo(){
 
     const date = new Date();
 
-    result.forEach(async (element) => {
+    result.forEach((element) => {
         const oneCard = card.content.cloneNode(true);
         oneCard.querySelectorAll('h1')[0].innerText=getFrenchDate(date);
         date.setDate(date.getDate()+1);
@@ -92,6 +92,7 @@ async function displayMeteo(){
             
             oneCard.querySelectorAll('.meteo_emoji')[0].parentNode.classList.add("flex-col");
             oneCard.querySelectorAll('.meteo_emoji')[0].style.width="13vw";
+            oneCard.querySelectorAll('.meteo-split-bar')[0].classList.remove("hidden");
 
         }
 
@@ -103,7 +104,10 @@ async function displayMeteo(){
         oneCard.querySelectorAll('.meteo_wind')[0].innerText=`${element.avgWind} km/h`;
         oneCard.querySelectorAll('.meteo_wind_dir')[0].innerText=`${element.avgWind}°`;
         oneCard.querySelectorAll('.meteo_label')[0].innerText=element.weather;
-        oneCard.querySelectorAll('.meteo_emoji')[0].src=await getMeteoEmoji(element.weatherCode);
+        const img = oneCard.querySelectorAll('.meteo_emoji')[0];
+        getMeteoEmoji(element.weatherCode).then(emoji => {
+            img.src=emoji;
+        });
         
         card.parentNode.appendChild(oneCard);
         
