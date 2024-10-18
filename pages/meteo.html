@@ -14,21 +14,21 @@
 
 <body class="w-screen h-screen grid grid-rows-3 bg-slate-600">
     <div class="justify-center items-center flex flex-col">
-        <div id="back_icon" class="absolute top-7 left-6 cursor-pointer">
+        <div id="back_icon" class="absolute top-7 left-6 cursor-pointer max-sm:w-[5vh]">
             <img src="../assets/back_arrow.svg" alt="">
         </div>
         <div class="flex items-center justify-around">
-            <h1 id="city" class="items-center text-7xl mr-7 font-bold text-white">Caen</h1>
+            <h1 id="city" class="items-center max-sm:text-[15vw] max-md:text-[10vw] text-[4vw] mr-7 font-bold text-white">Caen</h1>
             <img id="emoji" src="../assets/meteo/meteo_emoji/Sun.png" alt="" class="w-[5rem]">
         </div>
-        <h2 id="coord" class="text-[#ffffffb2] text-2xl font-bold mt-6 hidden">longitude: 49.1783300144186,
-            latitude: -0.36078501986557154 </h2>
+        <h2 id="coord" class="text-[#ffffffb2] max-sm:text-[5vw] max-md:text-[3vw] text-[1.25vw] font-bold mt-[1.5vh] hidden">Longitude: 49.1783300144186,
+            Latitude: -0.36078501986557154 </h2>
     </div>
     <div class="row-span-2 mx-[9vw] px-[1vw] flex flex-col gap-8 overflow-y-scroll">
         <template id="card">
             <div class="bg-[#d9d9d94d] w-full rounded-3xl font-bold text-white text-3xl">
-                <h1 class="text-white text-4xl ml-6 my-6">Lundi 30 septembre 2024</h1>
-                <div class="grid grid-cols-4 grid-flow-col">
+                <h1 class="text-white max-sm:text-[5vw] max-md:text-[3vw] text-[1.75vw] ml-6 my-6">Lundi 30 septembre 2024</h1>
+                <div class="grid grid-cols-4 grid-flow-col ">
                     <div class="flex">
                         <div class="flex disable:flex-col justify-center items-center h-full">
                             <img class="meteo_emoji py-2 w-[5vw] ml-[2vw] disabled:w-[13vw]" src="../assets/meteo/meteo_emoji/Sun.png" alt="">
@@ -37,37 +37,38 @@
                         <div class="meteo-split-bar w-1 bg-[#d9d9d94d] my-[5vh] rounded-t-lg hidden"></div>
                     </div>
                     <div class="col-span-3">
-                        <div class="flex w-full justify-around my-8 ">
+                        <div class="flex  w-full justify-around my-[2.5vh] ">
                             <div class="text-[#761313]">
-                                <img class="inline" src="../assets/meteo/arrow_red_up.svg" alt="">
-                                <span class="meteo_max_temp">26°C</span>
+                                <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/meteo/arrow_red_up.svg" alt="">
+                                <span class="meteo_max_temp max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw] ">26°C</span>
                             </div>
 
                             <div class="text-[#0057A8]">
-                                <img class="inline" src="../assets/meteo/arrow_blue_down.svg" alt="">
-                                <span class="meteo_min_temp">-10°C</span>
+                                <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/meteo/arrow_blue_down.svg" alt="">
+                                <span class="meteo_min_temp max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">-10°C</span>
                             </div>
                             <div>
-                                <img class="inline" src="../assets/meteo/droplet.svg" alt="">
-                                <span class="meteo_rain_proba">100%</span>
+                                <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/meteo/droplet.svg" alt="">
+                                <span class="meteo_rain_proba max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">100%</span>
                             </div>
                             <div>
-                                <img class="inline" src="../assets/meteo/sun.svg" alt="">
-                                <span class="meteo_sun_hours">10h</span>
+                                <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/meteo/sun.svg" alt="">
+                                <span class="meteo_sun_hours max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">10h</span>
                             </div>
                         </div>
-                        <div class="disabled:flex w-full justify-around my-14 hidden">
+                        <div class="h-1 bg-[#d9d9d94d] mx-[10vw] max-sm:mx-[10vw] rounded-lg"></div>
+                        <div class="disabled:flex w-full justify-around my-[3.5vh] hidden">
                             <div class="disabled:flex flex-col items-center hidden">
-                                <img class="w-[20vh]" src="/assets/meteo/pouring_liquid.png" alt="">
-                                <span class="meteo_cumul_rain">103 mm</span>
+                                <img class="w-[20vh] max-sm:w-[8vh]" src="/assets/meteo/pouring_liquid.png" alt="">
+                                <span class="meteo_cumul_rain max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">103 mm</span>
                             </div>
                             <div class="disabled:flex flex-col items-center hidden">
-                                <img class="w-[20vh] rounded-[46px]" src="/assets/meteo/wind_face.png" alt="">
-                                <span class="meteo_wind">100 km/h</span>
+                                <img class="w-[20vh] rounded-[25%] max-sm:w-[8vh]" src="/assets/meteo/wind_face.png" alt="">
+                                <span class="meteo_wind max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">100 km/h</span>
                             </div>
                             <div class="disabled:flex flex-col items-center hidden">
-                                <img class="w-[20vh]" src="/assets/Compass.png" alt="">
-                                <span class="meteo_wind_dir">170°</span>
+                                <img class="w-[20vh] max-sm:w-[8vh]" src="/assets/Compass.png" alt="">
+                                <span class="meteo_wind_dir max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">170°</span>
                             </div>
                         </div>
                     </div>
