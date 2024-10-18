@@ -64,7 +64,7 @@ async function displayMeteo(){
 
     if(emoji.src.includes("Snow")){
         let animation = document.getElementById("animation-snow");
-        animation.classList.add("rain");
+        animation.classList.add("snow");
     } 
 
     const date = new Date();
