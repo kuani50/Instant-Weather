@@ -1,48 +1,24 @@
 import { search } from "./api_postal_code.js";
 
-let settings_button = document.getElementById('settings_button');
-let settings_page = document.getElementById('settings_page');
+const settings_button = document.getElementById('settings_button');
+const settings_page = document.getElementById('settings_page');
 
-let settings_object = document.getElementById('settings_object');
+const settings_object = document.getElementById('settings_object');
 
-let search_bar = document.getElementById('search_bar');
-let city_choice = document.getElementById('city_choice');
+const search_bar = document.getElementById('search_bar');
+const city_choice = document.getElementById('city_choice');
 const row_template = document.getElementById('row_template');
 
 setupLocalStorage();
 
-// will manage everything related to the settings only when the settings page is open
-settings_object.addEventListener('load', () => {
 
-    // manages the closing button
-    let close = settings_object.contentDocument.getElementById('close');
-    
+settings_object.addEventListener('load', () => {
+    const close = settings_object.contentDocument.getElementById('close');
     close.addEventListener('click', () => {
         settings_page.classList.toggle('hidden');
     });
-
-    // puts the settings choice in the local storage
-    let latitudeAndLongitude = settings_object.contentDocument.getElementById("latitudeAndLongitude");
-    let rain = settings_object.contentDocument.getElementById("rain");
-    let windSpeed = settings_object.contentDocument.getElementById("windSpeed");
-    let windDirection = settings_object.contentDocument.getElementById("windDirection");
-
-    latitudeAndLongitude.addEventListener('change', () => {
-        localStorage.setItem("latitudeAndLongitude", latitudeAndLongitude.checked);
-    });
-
-    rain.addEventListener('change', () => {
-        localStorage.setItem("rain", rain.checked);
-    });
-
-    windSpeed.addEventListener('change', () => {
-        localStorage.setItem("windSpeed", windSpeed.checked);
-    });
-
-    windDirection.addEventListener('change', () => {
-        localStorage.setItem("windDirection", windDirection.checked);
-    });
 });
+
 
 // manages the button to open the settings
 settings_button.addEventListener('click', () => {
@@ -56,28 +32,61 @@ function setupLocalStorage(){
         localStorage.setItem("rain", false);
         localStorage.setItem("windSpeed", false);
         localStorage.setItem("windDirection", false);
+        localStorage.setItem("nbDays", "1");
     }
 }
 
+function onSearch(code,city){
+    const url = new URL(window.location.href);
+    url.pathname="/pages/meteo.html";
+    url.searchParams.set('insee',code);
+    url.searchParams.set('city',city);
+    document.location.href=url;
+}
+
+
 // displays the available search results
 search_bar.addEventListener('input', async () => {
-    let resultats = await search(search_bar.value);
-    if(resultats == null) {
-        city_choice.innerHTML = '';
-        return;
+    const input = search_bar.value;
+    if(/\d/.test(input)){
+        if(input.length>5) search_bar.value=input.slice(0,-1);
+        if((input.length != 5)) return;
     }
 
-    city_choice.setAttribute("size", resultats.length);
+    if(input.length == 0){
+        city_choice.innerHTML = '';
+        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        return;
+    }
+    console.log("search");
+    let resultats = await search(input);
+    city_choice.innerHTML = '';
+    
+    if(resultats.length > 0 && search_bar.value.length > 0){
+        search_bar.parentNode.classList.remove("rounded-b-[25px]");
+    }else{
+        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        return;
+    }
+    
+    
+    let names = new Set();
     Array.from(resultats).forEach(element => {
-        let row = row_template.content.cloneNode(true);
-        let row_content = row.querySelectorAll("*");
-        row_content[0].innerHTML = element['nom'];
-        city_choice.appendChild(row);
+        if(!names.has(element['nom'])){
+            names.add(element['nom']);
+            let row = row_template.content.cloneNode(true);
+            let row_content = row.querySelectorAll("button");
+            row_content[0].innerText = element['nom'];
+            row_content[0].addEventListener("click",() => onSearch(element['code'],element['nom']));
+            city_choice.appendChild(row);
+        }
     });
 
     // adds border radius to the last element of the list
     let last = Array.from(city_choice.children).pop();
-    last.classList.add("rounded-br-lg");
-    last.classList.add("rounded-bl-lg");
-    city_choice.appendChild(last);
+    if(last){
+        last.classList.add("rounded-b-[25px]");
+        city_choice.appendChild(last);
+    }
+    
 });
