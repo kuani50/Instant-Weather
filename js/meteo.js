@@ -52,7 +52,6 @@ async function displayMeteo(){
 
     const result = await weather(insee);
 
-    console.log(result);
 
     cityTitle.innerText=city;
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
@@ -60,7 +59,11 @@ async function displayMeteo(){
 
     const date = new Date();
 
-    result.forEach((element) => {
+    let limit = localStorage.getItem("nbDays");
+
+    for(const element of result){
+        if(limit <= 0) break;
+        limit--;
         const oneCard = card.content.cloneNode(true);
         oneCard.querySelectorAll('h1')[0].innerText=getFrenchDate(date);
         date.setDate(date.getDate()+1);
@@ -92,7 +95,8 @@ async function displayMeteo(){
             
             oneCard.querySelectorAll('.meteo_emoji')[0].parentNode.classList.add("flex-col");
             oneCard.querySelectorAll('.meteo_emoji')[0].style.width="13vw";
-            oneCard.querySelectorAll('.meteo-split-bar')[0].classList.remove("hidden");
+            for(const e of oneCard.querySelectorAll('.meteo-split-bar'))
+                e.classList.remove("hidden");
 
         }
 
@@ -111,7 +115,7 @@ async function displayMeteo(){
         
         card.parentNode.appendChild(oneCard);
         
-    });
+    };
 
 }
 displayMeteo();
