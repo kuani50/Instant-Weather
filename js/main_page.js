@@ -2,16 +2,14 @@ import { search } from "./api_postal_code.js";
 
 const settings_button = document.getElementById('settings_button');
 const settings_page = document.getElementById('settings_page');
-
 const settings_object = document.getElementById('settings_object');
-
 const search_bar = document.getElementById('search_bar');
 const city_choice = document.getElementById('city_choice');
 const row_template = document.getElementById('row_template');
 
 setupLocalStorage();
 
-
+// Setups the closing button of the settings when the settings page is loaded
 settings_object.addEventListener('load', () => {
     const close = settings_object.contentDocument.getElementById('close');
     close.addEventListener('click', () => {
@@ -20,12 +18,12 @@ settings_object.addEventListener('load', () => {
 });
 
 
-// manages the button to open the settings
+// Manages the button to open the settings
 settings_button.addEventListener('click', () => {
     settings_page.classList.toggle('hidden');
 });
 
-// setups the local storage even when no settings have been chosen
+// Setups the local storage when no settings have been chosen yet
 function setupLocalStorage(){
     if(localStorage.getItem("latitudeAndLongitude") == null){
         localStorage.setItem("latitudeAndLongitude", false);
@@ -36,6 +34,7 @@ function setupLocalStorage(){
     }
 }
 
+// Redirects to the weather page with the chosen city
 function onSearch(code,city){
     const url = new URL(window.location.href);
     url.pathname="/pages/meteo.html";
@@ -45,7 +44,7 @@ function onSearch(code,city){
 }
 
 
-// displays the available search results
+// Displays the available search results
 search_bar.addEventListener('input', async () => {
     const input = search_bar.value;
     if(/\d/.test(input)){
@@ -58,10 +57,10 @@ search_bar.addEventListener('input', async () => {
         search_bar.parentNode.classList.add("rounded-b-[25px]");
         return;
     }
-    let resultats = await search(input);
+    let result = await search(input);
     city_choice.innerHTML = '';
     
-    if(resultats.length > 0 && search_bar.value.length > 0){
+    if(result.length > 0 && search_bar.value.length > 0){
         search_bar.parentNode.classList.remove("rounded-b-[25px]");
     }else{
         search_bar.parentNode.classList.add("rounded-b-[25px]");
@@ -70,7 +69,7 @@ search_bar.addEventListener('input', async () => {
     
     
     let names = new Set();
-    Array.from(resultats).forEach(element => {
+    Array.from(result).forEach(element => {
         if(!names.has(element['nom'])){
             names.add(element['nom']);
             let row = row_template.content.cloneNode(true);
@@ -81,7 +80,7 @@ search_bar.addEventListener('input', async () => {
         }
     });
 
-    // adds border radius to the last element of the list
+    // Adds border radius to the last element of the list
     let last = Array.from(city_choice.children).pop();
     if(last){
         last.classList.add("rounded-b-[25px]");
