@@ -23,7 +23,7 @@ This website has been made as part of a Web Development project in second year o
 ## :door: Getting Started :door:
 
 
-Go to [index.html]().
+Go to [index.html](https://kuani50.github.io/Instant-Weather/).
 
 
 ## :technologist: Authors :technologist:
