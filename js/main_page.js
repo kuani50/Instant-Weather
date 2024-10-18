@@ -46,9 +46,29 @@ function onSearch(code,city){
 
 // displays the available search results
 search_bar.addEventListener('input', async () => {
-    let resultats = await search(search_bar.value);
-    city_choice.innerHTML = '';
+    const input = search_bar.value;
+    if(/\d/.test(input)){
+        if(input.length>5) search_bar.value=input.slice(0,-1);
+        if((input.length != 5)) return;
+    }
 
+    if(input.length == 0){
+        city_choice.innerHTML = '';
+        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        return;
+    }
+    console.log("search");
+    let resultats = await search(input);
+    city_choice.innerHTML = '';
+    
+    if(resultats.length > 0 && search_bar.value.length > 0){
+        search_bar.parentNode.classList.remove("rounded-b-[25px]");
+    }else{
+        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        return;
+    }
+    
+    
     let names = new Set();
     Array.from(resultats).forEach(element => {
         if(!names.has(element['nom'])){
@@ -64,8 +84,7 @@ search_bar.addEventListener('input', async () => {
     // adds border radius to the last element of the list
     let last = Array.from(city_choice.children).pop();
     if(last){
-        last.classList.add("rounded-br-lg");
-        last.classList.add("rounded-bl-lg");
+        last.classList.add("rounded-b-[25px]");
         city_choice.appendChild(last);
     }
     
