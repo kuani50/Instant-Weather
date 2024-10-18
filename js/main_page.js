@@ -58,7 +58,6 @@ search_bar.addEventListener('input', async () => {
         search_bar.parentNode.classList.add("rounded-b-[25px]");
         return;
     }
-    console.log("search");
     let resultats = await search(input);
     city_choice.innerHTML = '';
     
