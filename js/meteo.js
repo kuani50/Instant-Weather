@@ -1,5 +1,6 @@
 import {weather} from './api_weather.js';
 
+// An array that contains the name of the months in French to associate them with the month numbe
 const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ]
 
 const coord = document.getElementById("coord");
@@ -8,28 +9,31 @@ const card = document.getElementById("card");
 const back = document.getElementById("back_icon");
 const cityTitle = document.getElementById("city");
 
+// Redirects to the main page when the back button is clicked
 back.addEventListener("click",() => {
     const url = new URL(window.location.href);
     url.pathname="/pages/main_page.html";
     document.location.href=url;
 })
 
+// Returns true if the string is equal to "true" and false otherwise
 function strToBool(str){
     return str === 'true';
 }
 
+// Displays the latitude and longitude if the user has chosen to display them
 function loadSettings(){
     if(strToBool(localStorage.getItem("latitudeAndLongitude"))) coord.classList.remove("hidden");
 }
 loadSettings();
 
-
+// Returns the emoji associated with the weather code
 async function getMeteoEmoji(code){
     let result = await (await fetch('/assets/code_emoji.json')).json();
     return `/assets/meteo/meteo_emoji/${result[code]}`;
 }
 
-
+// Returns the date in French
 function getFrenchDate(date){
     
     let year = date.getFullYear()
@@ -44,34 +48,44 @@ function getFrenchDate(date){
     
 }
 
+// Displays the rain animation if the weather is rainy
+function displayRainBackground(emoji){
+    if(emoji.src.includes("Rain")){
+        let animation = document.getElementById("animation-rain");
+        animation.classList.add("rain");
+    } 
+}
+
+// Displays the snow animation if the weather is snowy
+function displaySnowBackground(emoji){
+    if(emoji.src.includes("Snow")){
+        let animation = document.getElementById("animation-snow");
+        animation.classList.add("snow");
+    } 
+}
+
+// Displays the weather of the city following the settings chosen by the user
 async function displayMeteo(){
     const url = new URLSearchParams(window.location.search);
     const insee = url.get("insee");
     const city = url.get("city");
 
-
     const result = await weather(insee);
-
 
     cityTitle.innerText=city;
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
     emoji.src=await getMeteoEmoji(result[0].weatherCode);
 
-    if(emoji.src.includes("Rain")){
-        let animation = document.getElementById("animation-rain");
-        animation.classList.add("rain");
-    } 
-
-    if(emoji.src.includes("Snow")){
-        let animation = document.getElementById("animation-snow");
-        animation.classList.add("snow");
-    } 
+    displayRainBackground(emoji);
+    displaySnowBackground(emoji);
 
     const date = new Date();
 
     let limit = localStorage.getItem("nbDays");
 
+    // Creates a card for each day of the weather forecast
     for(const element of result){
+        // Checks whether enough days have been displayed according to the choice of the user
         if(limit <= 0) break;
         limit--;
         const oneCard = card.content.cloneNode(true);
@@ -110,6 +124,7 @@ async function displayMeteo(){
 
         }
 
+        // Adds all of the information to the card
         oneCard.querySelectorAll('.meteo_max_temp')[0].innerText=`${element.tMax}°C`;
         oneCard.querySelectorAll('.meteo_min_temp')[0].innerText=`${element.tMin}°C`;
         oneCard.querySelectorAll('.meteo_rain_proba')[0].innerText=`${element.probaRain}%`;
