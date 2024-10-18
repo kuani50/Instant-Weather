@@ -8,7 +8,7 @@
 ::-webkit-scrollbar
 {
 	width: 12px;
-	background-color: transparent;
+	background-color: transparent; 
 }
 
 ::-webkit-scrollbar-thumb
@@ -21,6 +21,31 @@ body {
     background-image: url("../assets/main_background.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.rain {
+	height:100%;
+	background: url("../assets/background_animation/rain.png");
+	animation: rain 3s linear infinite;
+}
+
+@keyframes rain {
+	0% { background-position: 0% 0%; }
+
+	100% { background-position: -20% 100%; }
+}
+
+
+.snow {
+	height:100%;
+	background: url("../assets/background_animation/snow.png");
+	animation: snow 10s linear infinite;
+}
+
+@keyframes snow {
+	0% { background-position: 0% 0%; }
+
+	100% { background-position: 0% 100%; }
 }
 .slider {
     -webkit-appearance: none;

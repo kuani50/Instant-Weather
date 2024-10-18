@@ -57,6 +57,16 @@ async function displayMeteo(){
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
     emoji.src=await getMeteoEmoji(result[0].weatherCode);
 
+    if(emoji.src.includes("Rain")){
+        let animation = document.getElementById("animation-rain");
+        animation.classList.add("rain");
+    } 
+
+    if(emoji.src.includes("Snow")){
+        let animation = document.getElementById("animation-snow");
+        animation.classList.add("rain");
+    } 
+
     const date = new Date();
 
     let limit = localStorage.getItem("nbDays");
