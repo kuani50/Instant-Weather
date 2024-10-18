@@ -28,9 +28,9 @@ function loadSettings(){
 loadSettings();
 
 // Returns the emoji associated with the weather code
-async function getMeteoEmoji(code){
+async function getWeatherEmoji(code){
     let result = await (await fetch('/assets/code_emoji.json')).json();
-    return `/assets/meteo/meteo_emoji/${result[code]}`;
+    return `/assets/weather/weather_emoji/${result[code]}`;
 }
 
 // Returns the date in French
@@ -65,7 +65,7 @@ function displaySnowBackground(emoji){
 }
 
 // Displays the weather of the city following the settings chosen by the user
-async function displayMeteo(){
+async function displayWeather(){
     const url = new URLSearchParams(window.location.search);
     const insee = url.get("insee");
     const city = url.get("city");
@@ -74,7 +74,7 @@ async function displayMeteo(){
 
     cityTitle.innerText=city;
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
-    emoji.src=await getMeteoEmoji(result[0].weatherCode);
+    emoji.src=await getWeatherEmoji(result[0].weatherCode);
 
     displayRainBackground(emoji);
     displaySnowBackground(emoji);
@@ -96,45 +96,45 @@ async function displayMeteo(){
         let classList;
         if(strToBool(localStorage.getItem("windSpeed"))){
             full_info=true;
-            classList = oneCard.querySelectorAll('.meteo_wind')[0].parentNode.classList;
+            classList = oneCard.querySelectorAll('.weather_wind')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
         };
         if(strToBool(localStorage.getItem("windDirection"))){
             full_info=true;
-            classList = oneCard.querySelectorAll('.meteo_wind_dir')[0].parentNode.classList;
+            classList = oneCard.querySelectorAll('.weather_wind_dir')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
         };
         if(strToBool(localStorage.getItem("rain"))){
             full_info=true;
-            classList = oneCard.querySelectorAll('.meteo_cumul_rain')[0].parentNode.classList;
+            classList = oneCard.querySelectorAll('.weather_cumul_rain')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
         };
         if(full_info){
-            classList = oneCard.querySelectorAll('.meteo_cumul_rain')[0].parentNode.parentNode.classList;
+            classList = oneCard.querySelectorAll('.weather_cumul_rain')[0].parentNode.parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
             
-            oneCard.querySelectorAll('.meteo_emoji')[0].parentNode.classList.add("flex-col");
-            oneCard.querySelectorAll('.meteo_emoji')[0].style.width="13vw";
-            for(const e of oneCard.querySelectorAll('.meteo-split-bar'))
+            oneCard.querySelectorAll('.weather_emoji')[0].parentNode.classList.add("flex-col");
+            oneCard.querySelectorAll('.weather_emoji')[0].style.width="13vw";
+            for(const e of oneCard.querySelectorAll('.weather-split-bar'))
                 e.classList.remove("hidden");
 
         }
 
         // Adds all of the information to the card
-        oneCard.querySelectorAll('.meteo_max_temp')[0].innerText=`${element.tMax}°C`;
-        oneCard.querySelectorAll('.meteo_min_temp')[0].innerText=`${element.tMin}°C`;
-        oneCard.querySelectorAll('.meteo_rain_proba')[0].innerText=`${element.probaRain}%`;
-        oneCard.querySelectorAll('.meteo_sun_hours')[0].innerText=`${element.sunHours}h`;
-        oneCard.querySelectorAll('.meteo_cumul_rain')[0].innerText=`${element.cumulRain} mm`;
-        oneCard.querySelectorAll('.meteo_wind')[0].innerText=`${element.avgWind} km/h`;
-        oneCard.querySelectorAll('.meteo_wind_dir')[0].innerText=`${element.avgWind}°`;
-        oneCard.querySelectorAll('.meteo_label')[0].innerText=element.weather;
-        const img = oneCard.querySelectorAll('.meteo_emoji')[0];
-        getMeteoEmoji(element.weatherCode).then(emoji => {
+        oneCard.querySelectorAll('.weather_max_temp')[0].innerText=`${element.tMax}°C`;
+        oneCard.querySelectorAll('.weather_min_temp')[0].innerText=`${element.tMin}°C`;
+        oneCard.querySelectorAll('.weather_rain_proba')[0].innerText=`${element.probaRain}%`;
+        oneCard.querySelectorAll('.weather_sun_hours')[0].innerText=`${element.sunHours}h`;
+        oneCard.querySelectorAll('.weather_cumul_rain')[0].innerText=`${element.cumulRain} mm`;
+        oneCard.querySelectorAll('.weather_wind')[0].innerText=`${element.avgWind} km/h`;
+        oneCard.querySelectorAll('.weather_wind_dir')[0].innerText=`${element.avgWind}°`;
+        oneCard.querySelectorAll('.weather_label')[0].innerText=element.weather;
+        const img = oneCard.querySelectorAll('.weather_emoji')[0];
+        getWeatherEmoji(element.weatherCode).then(emoji => {
             img.src=emoji;
         });
         
@@ -143,4 +143,4 @@ async function displayMeteo(){
     };
 
 }
-displayMeteo();
+displayWeather();

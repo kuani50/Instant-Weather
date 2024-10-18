@@ -30,6 +30,7 @@ async function getCodeWeather(code){
 }
 
 // Loads the file containing a result of the API
+// Used for tests 
 export async function weather2(cityCode){
 
     let reponse = await fetch("/tempores.json");

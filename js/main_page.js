@@ -37,7 +37,7 @@ function setupLocalStorage(){
 // Redirects to the weather page with the chosen city
 function onSearch(code,city){
     const url = new URL(window.location.href);
-    url.pathname="/pages/meteo.html";
+    url.pathname="/pages/weather.html";
     url.searchParams.set('insee',code);
     url.searchParams.set('city',city);
     document.location.href=url;
