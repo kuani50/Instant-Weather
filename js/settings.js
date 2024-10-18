@@ -20,12 +20,12 @@ if(strToBool(localStorage.getItem("windSpeed"))) windSpeed.checked = true;
 if(strToBool(localStorage.getItem("windDirection"))) windDirection.checked = true;
 
 
-if(localStorage.getItem("nbDays") != 1){
+if(localStorage.getItem("nbDays") != undefined){
     sliderForNumberOfDay.value = localStorage.getItem("nbDays");
     textNumberOfDay.innerText = localStorage.getItem("nbDays") + " jours";
 }
 
-sliderForNumberOfDay.addEventListener('change', ()=>{
+sliderForNumberOfDay.addEventListener('input', ()=>{
     localStorage.setItem("nbDays", sliderForNumberOfDay.value);
     textNumberOfDay.innerText = sliderForNumberOfDay.value + " jours";
 });

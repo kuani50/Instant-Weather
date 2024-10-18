@@ -32,6 +32,7 @@ function setupLocalStorage(){
         localStorage.setItem("rain", false);
         localStorage.setItem("windSpeed", false);
         localStorage.setItem("windDirection", false);
+        localStorage.setItem("nbDays", "1");
     }
 }
 
