@@ -10,11 +10,14 @@ const back = document.getElementById("back_icon");
 const cityTitle = document.getElementById("city");
 
 // Redirects to the main page when the back button is clicked
-back.addEventListener("click",() => {
+back.addEventListener("click",backToMainPage)
+
+// Redirects to the main page
+function backToMainPage(){
     const url = new URL(window.location.href);
     url.pathname="/pages/main_page.html";
     document.location.href=url;
-})
+}
 
 // Returns true if the string is equal to "true" and false otherwise
 function strToBool(str){
@@ -70,7 +73,12 @@ async function displayWeather(){
     const insee = url.get("insee");
     const city = url.get("city");
 
-    const result = await weather(insee);
+    let result;
+    try{
+        result = await weather(insee);
+    }catch{
+        backToMainPage();
+    }
 
     cityTitle.innerText=city;
     coord.innerText=`latitude: ${result[0].latitude}, longitude: ${result[0].longitude}`;
