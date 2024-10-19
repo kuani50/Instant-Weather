@@ -15,7 +15,7 @@
 <body class="h-screen w-screen">
 
     <div class="absolute w-screen h-screen z-10 bg-[#50505060] hidden" id="settings_page">
-        <object data="settings.html" type="text/html" class="h-full w-full" id="settings_object"></object>
+        <object title="Page de paramètre" data="settings.html" type="text/html" class="h-full w-full" id="settings_object">Page de paramètre</object>
     </div>
 
     <button id="settings_button" class="absolute right-4 bottom-4">
@@ -27,6 +27,7 @@
 
         <div class="row-start-5 row-span-3">
             <div class="w-[35vw] flex justify-between bg-[#ECE6F0] rounded-t-[25px] rounded-b-[25px] pl-[2.5vw] pr-[1.5vw] shadow-xl shadow-gray-700 max-lg:w-[80vw]" >
+                <label class="hidden" for="search_bar">Recherche d'une ville avec le code postal</label>
                 <input id="search_bar" type="search" name="q" class="w-full bg-inherit rounded-full py-[0.5vw] text-black focus:outline-none focus:text-gray-900" placeholder="14000" autocomplete="off">
                 
                 <span class="inset-y-0 right-0 flex items-center pl-[0.5vw]">
