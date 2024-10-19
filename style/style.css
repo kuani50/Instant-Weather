@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+
+body {
+  background-image: url("../assets/main_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 ::-webkit-scrollbar-track
 {
 	background-color: transparent;
@@ -17,11 +25,7 @@
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.171);
 	background-color: #1d1919af;
 }
-body {
-    background-image: url("../assets/main_background.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 
 .rain {
 	height:100%;
@@ -35,7 +39,6 @@ body {
 	100% { background-position: -20% 100%; }
 }
 
-
 .snow {
 	height:100%;
 	background: url("../assets/background_animation/snow.png");
@@ -47,11 +50,12 @@ body {
 
 	100% { background-position: 0% 100%; }
 }
+
+
 .slider {
     -webkit-appearance: none;
     width: 95%;
     height: 2.1vh;
-    display: 5px;  
     background: #ffffff;
     outline: none;
     border-color: rgb(75 85 99);
@@ -77,4 +81,3 @@ body {
   background: #ffffff;
   cursor: pointer;
 }
-
