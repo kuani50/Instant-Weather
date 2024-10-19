@@ -25,7 +25,7 @@
     <div class="w-[100vw] h-[100%] grid grid-rows-8 place-content-center justify-items-center">
         <h1 class="font-inter font-bold text-[#F3EDF7] text-[4vw] tracking-[-0.02vw] row-start-3 drop-shadow-lg drop-shadow-black">Instant Weather</h1>
 
-        <div class="row-start-5">
+        <div class="row-start-5 row-span-3">
             <div class="w-[35vw] flex justify-between bg-[#ECE6F0] rounded-t-[25px] rounded-b-[25px] pl-[2.5vw] pr-[1.5vw] shadow-xl shadow-gray-700" >
                 <input id="search_bar" type="search" name="q" class="w-[25vw] bg-inherit rounded-full py-[0.5vw] text-[0.8vw] text-black   focus:outline-none focus:text-gray-900" placeholder="14000" autocomplete="off">
                 
@@ -35,8 +35,8 @@
                     </button>
                 </span>
             </div>
-            <div id="results_display" class="row-start-6 h-full rounded-br-lg rounded-bl-lg">
-                <div name="city" id="city_choice" class="flex flex-col w-[35vw] overflow-y-hidden">
+            <div id="results_display" class="h-full rounded-br-lg rounded-bl-lg overflow-y-auto">
+                <div name="city" id="city_choice" class="flex flex-col w-[35vw] overflow-y-auto">
                     <template id="row_template"><button class="bg-[#ECE6F0] py-[1vh] pl-[1vw] text-left hover:bg-[#c5c3c7] active:bg-[#a9a9aa]"></button></template>
                 </div>
             </div>
