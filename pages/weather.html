@@ -18,10 +18,10 @@
                     <img src="../assets/back_arrow.svg" alt="">
                 </div>    
                 <div class="flex items-center justify-around">
-                    <h1 id="city" class="items-center max-sm:text-[15vw] max-md:text-[10vw] text-[4vw] mr-7 font-bold text-white"></h1>
+                    <h1 id="city" class="items-center max-[425px]:text-[1em] max-lg:text-[3em] text-[4vw] mr-7 font-bold text-white"></h1>
                     <img id="emoji" src="" alt="" class="w-[5rem]">
                 </div>
-                <h2 id="coord" class="text-[#ffffffb2] max-sm:text-[5vw] max-md:text-[3vw] text-[1.25vw] font-bold mt-[1.5vh] hidden"></h2>
+                <h2 id="coord" class="text-[#ffffffb2] max-[425px]:text-[0.75em] max-lg:text-[1.5em] text-[1.5vw] font-bold mt-[1.5vh] hidden"></h2>
             </div>
             <div class="row-span-2 mx-[9vw] px-[1vw] flex flex-col gap-8 overflow-y-auto">
                 <template id="card">
@@ -30,43 +30,43 @@
                         <div class="grid grid-cols-4 grid-flow-col ">
                             <div class="flex">
                                 <div class="flex disable:flex-col justify-center items-center h-full">
-                                    <img class="weather_emoji py-2 w-[5vw] ml-[2vw] disabled:w-[13vw] max-md:w-[13vw]" src="../assets/weather/weather_emoji/Sun.png" alt="">
-                                    <span class="weather_label text-center text-2xl w-[17vw] max-lg:text-xl max-md:hidden">Weather</span>
+                                    <img class="weather_emoji py-2 w-[5vw] ml-[2vw] disabled:w-[13vw]" src="../assets/weather/weather_emoji/Sun.png" alt="">
+                                    <span class="weather_label text-center text-2xl w-[17vw]">Weather</span>
                                 </div>
                                 <div class="weather-split-bar w-1 bg-[#d9d9d94d] my-[5vh] rounded-t-lg hidden"></div>
                             </div>
                             <div class="col-span-3">
                                 <div class="flex  w-full justify-around my-[2.5vh] ">
                                     <div class="text-[#761313]">
-                                        <img class="inline max-sm:w-[5vw] max-lg:w-[2vw] w-[1.75vw]" src="../assets/weather/arrow_red_up.svg" alt="">
-                                        <span class="weather_max_temp max-sm:text-[5vw] max-lg:text-[3vw] text-[1.5vw] ">?°C</span>
+                                        <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/weather/arrow_red_up.svg" alt="">
+                                        <span class="weather_max_temp max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw] ">?°C</span>
                                     </div>
 
                                     <div class="text-[#0057A8]">
-                                        <img class="inline max-sm:w-[5vw] max-lg:w-[2vw] w-[1.75vw]" src="../assets/weather/arrow_blue_down.svg" alt="">
-                                        <span class="weather_min_temp max-sm:text-[5vw] max-lg:text-[3vw] text-[1.5vw]">?°C</span>
+                                        <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/weather/arrow_blue_down.svg" alt="">
+                                        <span class="weather_min_temp max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">?°C</span>
                                     </div>
                                     <div>
-                                        <img class="inline max-sm:w-[5vw] max-lg:w-[2vw] w-[1.75vw]" src="../assets/weather/droplet.svg" alt="">
-                                        <span class="weather_rain_proba max-sm:text-[5vw] max-lg:text-[3vw] text-[1.5vw]">?%</span>
+                                        <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/weather/droplet.svg" alt="">
+                                        <span class="weather_rain_proba max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">?%</span>
                                     </div>
                                     <div>
-                                        <img class="inline max-sm:w-[5vw] max-md:w-[2vw] max-lg:w-[3vw] w-[1.75vw]" src="../assets/weather/sun.svg" alt="">
-                                        <span class="weather_sun_hours max-sm:text-[5vw] max-lg:text-[3vw] text-[1.5vw]">?h</span>
+                                        <img class="inline max-sm:w-[5vw] max-md:w-[2vw] w-[1.75vw]" src="../assets/weather/sun.svg" alt="">
+                                        <span class="weather_sun_hours max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">?h</span>
                                     </div>
                                 </div>
                                 <div class="weather-split-bar h-1 bg-[#d9d9d94d] mx-[10vw] max-sm:mx-[10vw] rounded-lg hidden"></div>
                                 <div class="disabled:flex w-full justify-around my-[3.5vh] hidden">
                                     <div class="disabled:flex flex-col items-center hidden">
-                                        <img class="w-[20vh] max-sm:w-[8vh]" src="/assets/weather/pouring_liquid.png" alt="">
+                                        <img class="w-[12vw]" src="/assets/weather/pouring_liquid.png" alt="">
                                         <span class="weather_cumul_rain max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">? mm</span>
                                     </div>
                                     <div class="disabled:flex flex-col items-center hidden">
-                                        <img class="w-[20vh] rounded-[25%] max-sm:w-[8vh]" src="/assets/weather/wind_face.png" alt="">
+                                        <img class="w-[12vw] rounded-[25%]" src="/assets/weather/wind_face.png" alt="">
                                         <span class="weather_wind max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">? km/h</span>
                                     </div>
                                     <div class="disabled:flex flex-col items-center hidden">
-                                        <img class="w-[20vh] max-sm:w-[8vh]" src="/assets/Compass.png" alt="">
+                                        <img class="w-[12vw]" src="/assets/Compass.png" alt="">
                                         <span class="weather_wind_dir max-sm:text-[5vw] max-md:text-[3vw] text-[1.5vw]">?°</span>
                                     </div>
                                 </div>
