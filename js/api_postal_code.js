@@ -12,8 +12,8 @@ async function searchWCode(postalCode){
     }
 
     // Asks the API about the information it has about the postal code in parameter
-    let reply = await fetch("https://geo.api.gouv.fr/communes?codePostal=" + postalCode);
-    let tab = await reply.json();
+    const reply = await fetch("https://geo.api.gouv.fr/communes?codePostal=" + postalCode);
+    const tab = await reply.json();
 
     let result = [];
 
@@ -32,8 +32,8 @@ async function searchWCode(postalCode){
 async function searchWName(cityName){
 
     // Asks the API about the information it has about the city entered as a parameter
-    let reply = await fetch("https://geo.api.gouv.fr/communes?nom=" + cityName +"&fields=departement&boost=population&limit=5");
-    let tab = await reply.json();
+    const reply = await fetch("https://geo.api.gouv.fr/communes?nom=" + cityName +"&fields=departement&boost=population&limit=5");
+    const tab = await reply.json();
 
     let result = [];
 

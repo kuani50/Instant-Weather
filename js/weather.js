@@ -1,7 +1,7 @@
 import {weather} from './api_weather.js';
 
 // An array that contains the name of the months in French to associate them with the month numbe
-const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ]
+const monthLabel = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre" ];
 
 const coord = document.getElementById("coord");
 const emoji = document.getElementById("emoji");
@@ -10,7 +10,7 @@ const back = document.getElementById("back_icon");
 const cityTitle = document.getElementById("city");
 
 // Redirects to the main page when the back button is clicked
-back.addEventListener("click",backToMainPage)
+back.addEventListener("click",backToMainPage);
 
 // Redirects to the main page
 function backToMainPage(){
@@ -32,16 +32,16 @@ loadSettings();
 
 // Returns the emoji associated with the weather code
 async function getWeatherEmoji(code){
-    let result = await (await fetch('/assets/code_emoji.json')).json();
+    const result = await (await fetch('/assets/code_emoji.json')).json();
     return `/assets/weather/weather_emoji/${result[code]}`;
 }
 
 // Returns the date in French
 function getFrenchDate(date){
     
-    let year = date.getFullYear()
-    let dayNumber = date.getDate()
-    let month = monthLabel[date.getMonth()]
+    const year = date.getFullYear();
+    const dayNumber = date.getDate();
+    const month = monthLabel[date.getMonth()];
     let weekday = date.toLocaleDateString("fr-FR", { weekday: "long" });
     weekday = weekday.split('');
     weekday[0] = weekday[0].toUpperCase();
@@ -54,7 +54,7 @@ function getFrenchDate(date){
 // Displays the rain animation if the weather is rainy
 function displayRainBackground(emoji){
     if(emoji.src.includes("Rain")){
-        let animation = document.getElementById("animation-rain");
+        const animation = document.getElementById("animation-rain");
         animation.classList.add("rain");
     } 
 }
@@ -62,7 +62,7 @@ function displayRainBackground(emoji){
 // Displays the snow animation if the weather is snowy
 function displaySnowBackground(emoji){
     if(emoji.src.includes("Snow")){
-        let animation = document.getElementById("animation-snow");
+        const animation = document.getElementById("animation-snow");
         animation.classList.add("snow");
     } 
 }
@@ -107,19 +107,19 @@ async function displayWeather(){
             classList = oneCard.querySelectorAll('.weather_wind')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
-        };
+        }
         if(strToBool(localStorage.getItem("windDirection"))){
             full_info=true;
             classList = oneCard.querySelectorAll('.weather_wind_dir')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
-        };
+        }
         if(strToBool(localStorage.getItem("rain"))){
             full_info=true;
             classList = oneCard.querySelectorAll('.weather_cumul_rain')[0].parentNode.classList;
             classList.remove("hidden");
             classList.add("flex");
-        };
+        }
         if(full_info){
             classList = oneCard.querySelectorAll('.weather_cumul_rain')[0].parentNode.parentNode.classList;
             classList.remove("hidden");
@@ -148,7 +148,7 @@ async function displayWeather(){
         
         card.parentNode.appendChild(oneCard);
         
-    };
+    }
 
 }
 displayWeather();

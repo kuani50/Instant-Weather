@@ -1,13 +1,13 @@
 import { strToBool } from './utils.js';
 
 // Puts the settings choice in the local storage
-let latitudeAndLongitude = document.getElementById("latitudeAndLongitude");
-let rain = document.getElementById("rain");
-let windSpeed = document.getElementById("windSpeed");
-let windDirection = document.getElementById("windDirection");
+const latitudeAndLongitude = document.getElementById("latitudeAndLongitude");
+const rain = document.getElementById("rain");
+const windSpeed = document.getElementById("windSpeed");
+const windDirection = document.getElementById("windDirection");
 
-let sliderForNumberOfDay = document.getElementById("sliderNbDays");
-let textNumberOfDay = document.getElementById("textNumberOfDays");
+const sliderForNumberOfDay = document.getElementById("sliderNbDays");
+const textNumberOfDay = document.getElementById("textNumberOfDays");
 
 // Coordinates the buttons with the local storage
 if(strToBool(localStorage.getItem("latitudeAndLongitude"))) latitudeAndLongitude.checked = true;

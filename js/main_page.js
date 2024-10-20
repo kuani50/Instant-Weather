@@ -1,26 +1,26 @@
 import { search } from "./api_postal_code.js";
 
-const settings_button = document.getElementById('settings_button');
-const settings_page = document.getElementById('settings_page');
-const settings_object = document.getElementById('settings_object');
-const search_bar = document.getElementById('search_bar');
-const city_choice = document.getElementById('city_choice');
-const row_template = document.getElementById('row_template');
+const settingsButton = document.getElementById('settings_button');
+const settingsPage = document.getElementById('settings_page');
+const settingsObject = document.getElementById('settings_object');
+const searchBar = document.getElementById('search_bar');
+const cityChoice = document.getElementById('city_choice');
+const rowTemplate = document.getElementById('row_template');
 
 setupLocalStorage();
 
 // Setups the closing button of the settings when the settings page is loaded
-settings_object.addEventListener('load', () => {
-    const close = settings_object.contentDocument.getElementById('close');
+settingsObject.addEventListener('load', () => {
+    const close = settingsObject.contentDocument.getElementById('close');
     close.addEventListener('click', () => {
-        settings_page.classList.toggle('hidden');
+        settingsPage.classList.toggle('hidden');
     });
 });
 
 
 // Manages the button to open the settings
-settings_button.addEventListener('click', () => {
-    settings_page.classList.toggle('hidden');
+settingsButton.addEventListener('click', () => {
+    settingsPage.classList.toggle('hidden');
 });
 
 // Setups the local storage when no settings have been chosen yet
@@ -45,46 +45,46 @@ function onSearch(code,city){
 
 
 // Displays the available search results
-search_bar.addEventListener('input', async () => {
-    const input = search_bar.value;
+searchBar.addEventListener('input', async () => {
+    const input = searchBar.value;
     if(/\d/.test(input)){
-        if(input.length>5) search_bar.value=input.slice(0,-1);
+        if(input.length>5) searchBar.value=input.slice(0,-1);
         if((input.length != 5)) return;
     }
 
     if(input.length == 0){
-        city_choice.innerHTML = '';
-        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        cityChoice.innerHTML = '';
+        searchBar.parentNode.classList.add("rounded-b-[25px]");
         return;
     }
     let result = await search(input);
-    city_choice.innerHTML = '';
+    cityChoice.innerHTML = '';
     
-    if(result.length > 0 && search_bar.value.length > 0){
-        search_bar.parentNode.classList.remove("rounded-b-[25px]");
+    if(result.length > 0 && searchBar.value.length > 0){
+        searchBar.parentNode.classList.remove("rounded-b-[25px]");
     }else{
-        search_bar.parentNode.classList.add("rounded-b-[25px]");
+        searchBar.parentNode.classList.add("rounded-b-[25px]");
         return;
     }
     
     
     let names = new Set();
     Array.from(result).forEach(element => {
-        if(!names.has(element['nom'])){
-            names.add(element['nom']);
-            let row = row_template.content.cloneNode(true);
-            let row_content = row.querySelectorAll("button");
-            row_content[0].innerText = element['nom'];
-            row_content[0].addEventListener("click",() => onSearch(element['code'],element['nom']));
-            city_choice.appendChild(row);
+        if(!names.has(element.nom)){
+            names.add(element.nom);
+            let row = rowTemplate.content.cloneNode(true);
+            let rowContent = row.querySelectorAll("button");
+            rowContent[0].innerText = element.nom;
+            rowContent[0].addEventListener("click",() => onSearch(element.code,element.nom));
+            cityChoice.appendChild(row);
         }
     });
 
     // Adds border radius to the last element of the list
-    let last = Array.from(city_choice.children).pop();
+    let last = Array.from(cityChoice.children).pop();
     if(last){
         last.classList.add("rounded-b-[25px]");
-        city_choice.appendChild(last);
+        cityChoice.appendChild(last);
     }
     
 });
