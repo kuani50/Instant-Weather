@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Weather</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../js/settings.js"></script>
+</head>
+
+<body class="h-screen w-screen flex justify-center items-center  " id="page">
+
+    <div class="border-[0.185vh] border-black bg-[#f5e8e8f3] rounded-[2.222vh] pl-[1vw] pb-[3vh] max-2xl:w-[50%] max-[800px]:w-[80%]">
+        <div class="flex justify-end pr-[0.5vw] py-[1vh] ">
+            <button id="close">
+                <img src="../assets/close.svg" class="h-[3.241vh] w-8" alt="Croix">
+
+            </button>
+        </div>
+
+        <div class="mr-[2.5vw] ml-[1.25vw] mb-[0.75vh] flex justify-between">
+            <div class="flex items-center">
+                <img src="../assets/Globe.svg" class="w-[2.5vw] max-[700px]:w-[1.6em]" alt="Globe">
+                <div class="w-full flex flex-col">
+                    <label for="latitudeAndLongitude" class="ml-[0.625vw] text-[1em] text-gray-600 max-[1440px]:text-[1.25em] ">Latitude, longitude</label>
+                    <span class="ml-[0.625vw] text-[1em] font-normal text-gray-400 max-[1440px]:text-[1.25em]">décimale de la commune</span>
+                </div>
+            </div>
+
+            <div class="ml-[7vw]">
+                <label class="relative inline-flex items-center mb-5 cursor-pointer justify-end">
+                    <input type="checkbox" value="" class="sr-only peer" id="latitudeAndLongitude">
+                    <span class="w-[1.5rem] h-[1em] bg-[#FFFFFF] hover:bg-gray-300 peer-focus:outline-0 border border-gray-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[0.185vh] after:left-[0.104vw] after:bg-gray-500 after:border-0 after:rounded-full after:h-[0.75em] after:w-[0.75em]  peer-checked:after:bg-white peer-checked:bg-black hover:peer-checked:bg-gray-700 "></span>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="mr-[2.5vw] ml-[1.25vw] mb-[0.75vh] flex justify-between">
+            <div class="flex items-center">
+                <img src="../assets/Droplet.svg" class="w-[2.5vw] max-[700px]:w-[1.6em]" alt="Goutte d'eau">
+
+                <div class="w-full flex flex-col">
+                    <label for="rain" class="ml-[0.625vw] text-[1em] font-normal text-gray-600 max-[1440px]:text-[1.25em]">Pluie</label>
+                    <span class="ml-[0.625vw] text-[1em] font-normal text-gray-400 max-[1440px]:text-[1.25em]">cumul sur la journée en mm</span>
+                </div>
+            </div>
+
+            <div class="ml-[7vw]">
+                <label class="relative inline-flex items-center mb-5 cursor-pointer justify-end">
+                    <input type="checkbox" value="" class="sr-only peer" id="rain">
+                    <span class="w-[1.5rem] h-[1em] bg-[#FFFFFF] hover:bg-gray-300 peer-focus:outline-0 border border-gray-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[0.185vh] after:left-[0.104vw] after:bg-gray-500 after:border-0 after:rounded-full after:h-[0.75em] after:w-[0.75em]  peer-checked:after:bg-white peer-checked:bg-black hover:peer-checked:bg-gray-700 "></span>
+                </label>
+            </div>
+        </div>
+
+
+
+        <div class="mr-[2.5vw] ml-[1.25vw] mb-[0.75vh] flex justify-between">
+            <div class="flex items-center">
+                <img src="../assets/Wind.svg" class="w-[2.5vw] max-[700px]:w-[1.6em]" alt="Vent">
+
+
+                <div class="w-full flex flex-col">
+                    <label for="windSpeed" class="ml-[0.625vw] text-[1em] font-normal text-gray-600 max-[1440px]:text-[1.25em]">Vitesse du vent</label>
+                    <span class="ml-[0.625vw] text-[1em] font-normal text-gray-400 max-[1440px]:text-[1.25em]">Moyenne à 10m en
+                        km/h</span>
+                </div>
+            </div>
+
+            <div class="ml-[7vw]">
+                <label class="relative inline-flex items-center mb-5 cursor-pointer justify-end">
+                    <input type="checkbox" value="" class="sr-only peer" id="windSpeed">
+                    <span class="w-[1.5rem] h-[1em] bg-[#FFFFFF] hover:bg-gray-300 peer-focus:outline-0 border border-gray-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[0.185vh] after:left-[0.104vw] after:bg-gray-500 after:border-0 after:rounded-full after:h-[0.75em] after:w-[0.75em]  peer-checked:after:bg-white peer-checked:bg-black hover:peer-checked:bg-gray-700 "></span>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="mr-[2.5vw] ml-[1.25vw] mb-[0.75vh] flex justify-between">
+            <div class="flex items-center">
+                <img src="../assets/Compass.svg" class="w-[2.5vw] max-[700px]:w-[1.6em]" alt="Boussole">
+                <div class="w-full flex flex-col">
+                    <label for="windDirection" class="ml-[0.625vw] text-[1em] font-normal text-gray-600 max-[1440px]:text-[1.25em]">Direction du vent</label>
+                    <span class="ml-[0.625vw] text-[1em] font-normal text-gray-400 max-[1440px]:text-[1.25em] ">en degrés de 0 à 360°</span>
+                </div>
+            </div>
+
+            <div class="ml-[7vw]">
+                <label class="relative inline-flex items-center mb-5 cursor-pointer justify-end">
+                    <input type="checkbox" value="" class="sr-only peer" id="windDirection">
+                    <span class="w-[1.5rem] h-[1em] bg-[#FFFFFF] hover:bg-gray-300 peer-focus:outline-0 border border-gray-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[0.185vh] after:left-[0.104vw] after:bg-gray-500 after:border-0 after:rounded-full after:h-[0.75em] after:w-[0.75em]  peer-checked:after:bg-white peer-checked:bg-black hover:peer-checked:bg-gray-700 "></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mr-[2.5vw] ml-[1.25vw] mb-[0.75vh] flex items-center">
+            <img src="../assets/calendar.svg" class="w-[2.5vw] max-[700px]:w-[1.6em]" alt="Calendrier">
+            <div class="w-full flex flex-col">
+                <div class="flex justify-between">
+                    <label for="sliderNbDays" class="ml-[0.625vw] text-[1em] font-normal text-gray-600 max-[1440px]:text-[1.25em]">Durée en jours</label>
+                    <span class="ml-[0.625vw] text-[1em] font-normal text-gray-600 max-[1440px]:text-[1.25em]" id="textNumberOfDays">1-7 jours</span>
+                </div>
+
+                <div class="slide-container flex items-center pl-[0.625vw] pt-[0.7vw] w-full">
+                    <input type="range" min="1" max="7" value="1" class="slider w-full" id="sliderNbDays">
+                </div>
+
+                <span class="ml-[0.625vw] text-[1em] font-normal text-gray-400 max-[1440px]:text-[1.25em]"> Nombre de jours de météo</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

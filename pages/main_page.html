@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Weather</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind.config.js"></script>
+    <script type="module" src="../js/main_page.js"></script>
+    <script type="module" src="../js/api_postal_code.js"></script>
+</head>
+
+<body class="h-screen w-screen">
+
+    <div class="absolute w-screen h-screen z-10 bg-[#50505060] hidden" id="settings_page">
+        <object title="Page de paramètre" data="settings.html" type="text/html" class="h-full w-full" id="settings_object">Page de paramètre</object>
+    </div>
+
+    <button id="settings_button" class="absolute right-4 bottom-4">
+        <img src="../assets/Settings.svg" alt="Paramètres" class="h-[5vh] w-[5vh]">
+    </button>
+
+    <div class="w-[100vw] h-[100%] grid grid-rows-8 place-content-center justify-items-center">
+        <h1 class="font-inter font-bold text-[#F3EDF7] text-[4vw] tracking-[-0.02vw] row-start-3 drop-shadow-lg drop-shadow-black max-xl:text-6xl max-sm:text-[10vw]">Instant Weather</h1>
+
+        <div class="row-start-5 row-span-3">
+            <div class="w-[35vw] flex justify-between bg-[#ECE6F0] rounded-t-[25px] rounded-b-[25px] pl-[2.5vw] pr-[1.5vw] shadow-xl shadow-gray-700 max-lg:w-[80vw]" >
+                <label class="hidden" for="search_bar">Recherche d'une ville avec le code postal</label>
+                <input id="search_bar" type="search" name="q" class="w-full bg-inherit rounded-full py-[0.5vw] text-black focus:outline-none focus:text-gray-900" placeholder="14000" autocomplete="off">
+                
+                <span class="inset-y-0 right-0 flex items-center pl-[0.5vw]">
+                    <button type="button" id="search_button" class="p-1 focus:outline-none focus:shadow-outline">
+                        <img src="../assets/state-layer.svg" class="h-[4vh] w-[4vh]" alt="Loupe de recherche">
+                    </button>
+                </span>
+            </div>
+            <div id="results_display" class="h-full rounded-br-lg rounded-bl-lg overflow-y-auto">
+                <div id="city_choice" class="flex flex-col w-[35vw] max-lg:w-[80vw] overflow-y-auto">
+                    <template id="row_template"><button class="bg-[#ECE6F0] py-[1vh] pl-[1vw] text-left hover:bg-[#c5c3c7] active:bg-[#a9a9aa]"></button></template>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
