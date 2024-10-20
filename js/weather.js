@@ -15,7 +15,7 @@ back.addEventListener("click",backToMainPage);
 // Redirects to the main page
 function backToMainPage(){
     const url = new URL(window.location.href);
-    url.pathname="/pages/main_page.html";
+    url.pathname+="/../main_page.html";
     document.location.href=url;
 }
 
@@ -32,8 +32,8 @@ loadSettings();
 
 // Returns the emoji associated with the weather code
 async function getWeatherEmoji(code){
-    const result = await (await fetch('/assets/code_emoji.json')).json();
-    return `/assets/weather/weather_emoji/${result[code]}`;
+    const result = await (await fetch('../assets/code_emoji.json')).json();
+    return `../assets/weather/weather_emoji/${result[code]}`;
 }
 
 // Returns the date in French
